@@ -1,9 +1,5 @@
 function ASCIIAnimation(animArray, speed, DOMtarget) {
     var currentFrame = 0;
-    // for(var i = 0; i < animArray.length; i++) {
-    //     animArray[i] = animArray[i].replace(/ /g,"&nbsp;");
-    //     animArray[i] = "<pre>" + animArray[i] + "</pre>";
-    // }
     DOMtarget.innerHTML = animArray[0];
     currentFrame++;
     this.animation = setInterval(function() {
@@ -65,7 +61,7 @@ const hackLogo = `
                          ******             ****////.             ///////                         
                           ***                                      /////                          
                            /*,                                         //
-`.replaceAll('\n', "<br>")
+`.replaceAll('\n', "<br>");
 const animSpeed = 100;
 
 let newLogo1 = "";
@@ -92,7 +88,7 @@ function generateNewHack() {
 
 function advanceHack() {
     // progress logo to original state
-    newLogo1 = newLogo1.substring(5, newLogo1.length-6)
+    newLogo1 = newLogo1.replaceAll("<pre>", "").replaceAll("</pre>", "")
     for (let i=0; i<newLogo1.length; i++) {
         if(newLogo1[i] == '<' || newLogo1[i] == "b" || newLogo1[i] == "r" || newLogo1[i] == ">" || newLogo1[i] == hackLogo[i]) {
             newLogo2 += newLogo1[i];
@@ -100,7 +96,6 @@ function advanceHack() {
             newLogo2 += getRandomChar();
         }
     }
-    //newLogo2 = newLogo2.replace(/ /g,"&nbsp;");
     newLogo2 = "<pre>" + newLogo2 + "</pre>";
     newLogo1 = newLogo2;
     newLogo2 = "";
